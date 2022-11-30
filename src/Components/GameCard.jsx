@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Card, CardContent, CardHeader } from "@mui/material";
+import { Box, Button, Card, CardContent, CardHeader } from "@mui/material";
 
 import Field from "./Field";
 
@@ -11,6 +11,16 @@ const GameCard = () => {
   ]);
   const [value, setValue] = useState(false);
   const [winner, setWinner] = useState(null);
+
+  const onReset = () => {
+    setInputFields([
+      [null, null, null],
+      [null, null, null],
+      [null, null, null]
+    ]) 
+    setValue(false)
+    setWinner(null)
+  }
 
   const updateFieldValue = (colIndex, rowIndex, activeUser) => {
     let temp = inputFields;
@@ -107,6 +117,9 @@ const GameCard = () => {
               />
             ))}
           </Box>
+          <CardHeader>
+            <Button onClick={onReset}>Reset</Button>
+          </CardHeader>
         </CardContent>
       </Card>
     </>
